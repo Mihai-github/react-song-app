@@ -2,11 +2,11 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import MainTabNavigator from './MainTabNavigator';
-import LoginScreen from '../components/LoginScreen';
 import createSong from '../components/createSong';
 import playVideo from '../components/playVideo';
 import createPlayList from '../components/createPlayList';
 import playListSongs from '../components/playListSongs';
+import qrCode from '../components/qrCode';
 
 const MainStack = createStackNavigator();
 
@@ -17,7 +17,6 @@ const MainStackNavigator = () => {
         name="Tabs"
         options={{}}
         component={MainTabNavigator}></MainStack.Screen>
-      <MainStack.Screen name="Login" component={LoginScreen}></MainStack.Screen>
       <MainStack.Screen
         name="createSong"
         component={createSong}></MainStack.Screen>
@@ -30,6 +29,7 @@ const MainStackNavigator = () => {
       <MainStack.Screen
         name="playListSongs"
         component={playListSongs}></MainStack.Screen>
+      <MainStack.Screen name="qrCode" component={qrCode}></MainStack.Screen>
     </MainStack.Navigator>
   );
 };

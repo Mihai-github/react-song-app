@@ -17,12 +17,6 @@ const playVideo = ({navigation, route}) => {
     return newUrl;
   }, [routes]);
 
-  console.log(
-    routes.url,
-    parsedUrl,
-    'https://www.youtube.com/embed/' + parsedUrl,
-  );
-
   React.useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -41,25 +35,13 @@ const playVideo = ({navigation, route}) => {
         </View>
       ) : (
         <>
-          {/* <View style={{width: 120, marginBottom: 100}}>
-            <Icon.Button
-              name="arrow-back"
-              backgroundColor="#3b5998"
-              onPress={() => navigation.navigate('List')}>
-              Go Back
-            </Icon.Button>
-          </View> */}
           <View
             style={{
               marginTop: 0,
               height: Dimensions.get('window').height,
-              //flex: 1,
-              //justifyContent: 'center',
-              //alignSelf: 'flex-start',
             }}>
             <WebView
               containerStyle={{
-                // backgroundColor: 'red',
                 position: 'relative',
                 width: Dimensions.get('window').width,
                 height: Dimensions.get('window').height,

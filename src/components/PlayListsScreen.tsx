@@ -43,7 +43,6 @@ const PlayListsScrenn = ({navigation, LoginScreen, route}) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log(loading);
       refetch();
     }, [item]),
   );
@@ -52,14 +51,21 @@ const PlayListsScrenn = ({navigation, LoginScreen, route}) => {
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
         <View style={{flex: 1, justifyContent: 'center'}}>
-          <Text style={{textAlign: 'center', fontSize: 22, paddingBottom: 10}}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 26,
+              fontWeight: 'bold',
+              paddingBottom: 10,
+              marginTop: 15,
+            }}>
             {currentItem.name}
           </Text>
         </View>
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
           <Image
             onLongPress={() => {
-              navigation.navigate('playListSongs', {id: currentItem.id});
+              navigation.navigate('playListSongs', {playList: currentItem});
             }}
             onPress={() => {
               navigation.navigate('createPlayList', {id: currentItem.id});
@@ -105,20 +111,24 @@ const PlayListsScrenn = ({navigation, LoginScreen, route}) => {
     );
   };
   return (
-    <ScrollView style={{backgroundColor: '#fff'}}>
-      <FlatList
-        data={item?.playList}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-      <Icon.Button
-        name="paint-brush"
-        backgroundColor="rgb(33, 150, 243)"
-        style={{justifyContent: 'center', borderRadius: 0}}
-        onPress={() => navigation.navigate('createPlayList')}>
-        Create PlayList
-      </Icon.Button>
-    </ScrollView>
+    <>
+      <ScrollView style={{backgroundColor: '#fff', marginBottom: 30}}>
+        <FlatList
+          data={item?.playList}
+          renderItem={renderItem}
+          keyExtractor={(item) => String(item.id)}
+        />
+      </ScrollView>
+      <View style={{position: 'absolute', bottom: 0, width: '100%'}}>
+        <Icon.Button
+          name="paint-brush"
+          backgroundColor="rgb(33, 150, 243)"
+          style={{justifyContent: 'center', borderRadius: 0}}
+          onPress={() => navigation.navigate('createPlayList')}>
+          Create PlayList
+        </Icon.Button>
+      </View>
+    </>
   );
 };
 

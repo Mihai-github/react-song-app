@@ -42,7 +42,7 @@ const createPlayList = ({navigation, route}) => {
     if (data) {
       setValues();
     }
-    console.log(data);
+    //console.log(data);
   }, [data]);
 
   const setValues = React.useCallback(() => {

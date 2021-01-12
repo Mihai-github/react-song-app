@@ -4,7 +4,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import PlayListsScrenn from '../components/PlayListsScreen';
 import ListSongs from '../components/ListSongs';
-import SearchScrenn from '../components/search/SearchScreen';
 import createSong from '../components/createSong';
 import {TouchableOpacity, View, Text} from 'react-native';
 
@@ -19,14 +18,6 @@ const PlayListsStackNavigator = () => {
         name="PlayLists"
         component={PlayListsScrenn}
       />
-    </Nav.Navigator>
-  );
-};
-
-const SearchStackNavigator = () => {
-  return (
-    <Nav.Navigator>
-      <Nav.Screen name="Search" component={SearchScrenn} />
     </Nav.Navigator>
   );
 };
@@ -112,10 +103,10 @@ const MainTabNavigator = () => {
         }}
         name="PlayLists"
         component={PlayListsStackNavigator}></MainTab.Screen>
-      <MainTab.Screen
+      {/* <MainTab.Screen
         name="Search"
         options={{}}
-        component={SearchStackNavigator}></MainTab.Screen>
+        component={SearchStackNavigator}></MainTab.Screen> */}
       <MainTab.Screen
         options={{title: 'List of Songs'}}
         name="List"

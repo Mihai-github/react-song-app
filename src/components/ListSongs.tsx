@@ -63,7 +63,7 @@ const ListSongs = ({route, navigation}) => {
         <ScrollView style={{backgroundColor: '#fff', paddingTop: 20}}>
           <Box w="100%">
             <Card containerStyle={style.input}>
-              <Card.Title style={{color: 'black', fontSize: 18}}>
+              <Card.Title style={{color: 'lightblue', fontSize: 18}}>
                 List of songs available
               </Card.Title>
               <Card.Divider />
@@ -99,10 +99,8 @@ const ListSongs = ({route, navigation}) => {
                           color: 'rgb(33, 150, 243)',
                           marginTop: 15,
                           paddingLeft: 15,
-                          //marginBottom: 15,
-                          textDecorationLine: 'underline',
                         }}>
-                        {item.title}
+                        Title: {item.title}
                       </Text>
                       <Text
                         style={{
@@ -160,6 +158,17 @@ const ListSongs = ({route, navigation}) => {
                             navigation.navigate('playVideo', {url: item.url})
                           }>
                           Watch YT video
+                        </Text>
+                        <Text
+                          style={{
+                            textAlign: 'center',
+                            color: 'blue',
+                            paddingTop: 10,
+                          }}
+                          onPress={() =>
+                            navigation.navigate('qrCode', {qrCode: item})
+                          }>
+                          Generate QRCode
                         </Text>
                       </TouchableOpacity>
                     </View>

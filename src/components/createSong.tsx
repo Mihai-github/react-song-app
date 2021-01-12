@@ -44,7 +44,8 @@ const createSong = ({navigation, route}) => {
     selectedMinutes: 0,
   });
   const routeParams = route.params;
-  console.log(routeParams);
+  console.log(routeParams.title);
+  //console.log(routeParams?.item.duration.split(':'));
   const setValues = React.useCallback(() => {
     if (routeParams.item) {
       setDefaultSong({
@@ -56,12 +57,16 @@ const createSong = ({navigation, route}) => {
           description: routeParams.item.description,
         },
       });
+      //   let h = routeParams?.item.duration.split(':')[0];
+      //   let m = routeParams?.item.duration.split(':')[1];
+      //   setTimePiker({selectedHours: 12, selectedMinutes: 12});
     }
   }, [defaultSong]);
 
   React.useEffect(() => {
     setValues();
-  }, []);
+    //setTimePiker({selectedHours: 12, selectedMinutes: 12});
+  }, [route]);
 
   const onChange = (value) => {
     setDefaultSong({value});
@@ -128,7 +133,11 @@ const createSong = ({navigation, route}) => {
               setTimePiker({selectedHours: hours, selectedMinutes: minutes})
             }
           />
-          <Button title="Create" onPress={handleSubmit} />
+          {routeParams.item.title ? (
+            <Button title="Edit" onPress={handleSubmit} />
+          ) : (
+            <Button title="Create" onPress={handleSubmit} />
+          )}
         </ScrollView>
       </Box>
     </>
